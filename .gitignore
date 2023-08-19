@@ -1,0 +1,9 @@
+.vscode/
+backend-java/spring-boot-app/.mvn/
+backend-java/spring-boot-app/.vscode/
+backend-java/spring-boot-app/target/
+backend-java/spring-boot-app/src/main/python/venv/
+backend-python/venv/
+frontend/react-gui/node_modules/
+frontend/react-gui/build/
+backend-java/spring-boot-app/src/main/python/input-data/
