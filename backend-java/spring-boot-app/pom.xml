@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>2.5.15</version>
+		<relativePath/> <!-- lookup parent from repository -->
+	</parent>
+	<groupId>com.example</groupId>
+	<artifactId>spring-boot-app</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>provenance-backend</name>
+	<description>Spring Boot backend for Provenance Module</description>
+	<properties>
+		<java.version>12</java.version>
+		<spring-boot.version>2.5.15</spring-boot.version>
+		<startTime>15</startTime>
+        <endTime>45</endTime>
+	</properties>
+	<dependencies>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>3.8.1</version>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.openprovenance.prov</groupId>
+			<artifactId>prov-interop-light</artifactId>
+			<version>0.9.29</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.openprovenance.prov</groupId>
+			<artifactId>prov-model</artifactId>
+			<version>0.9.29</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.openprovenance.prov</groupId>
+			<artifactId>prov-interop</artifactId>
+			<version>0.9.29</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.openprovenance.prov</groupId>
+			<artifactId>prov-template</artifactId>
+			<version>0.9.29</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.openprovenance.prov</groupId>
+			<artifactId>prov-template-compiler</artifactId>
+			<version>0.9.29</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.openprovenance.prov</groupId>
+			<artifactId>prov-rdf</artifactId>
+			<version>0.9.29</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.maven.shared</groupId>
+			<artifactId>maven-invoker</artifactId>
+			<version>3.0.1</version>
+		</dependency>
+
+
+
+	</dependencies>
+
+	<build>
+		<plugins>
+
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+	
+				<artifactId>exec-maven-plugin</artifactId>
+				<version>1.2.1</version>
+				<executions>
+
+				
+					<execution>
+						<id>create-virtualenv</id>
+						<phase>test</phase>
+						<goals>
+						<goal>exec</goal>
+						</goals>
+						<configuration>
+						<executable>bash</executable>
+						<workingDirectory>${project.basedir}/src/main/python</workingDirectory>
+						<arguments>
+							<argument>-c</argument>
+							<argument>python3 -m venv venv</argument>
+						</arguments>
+						</configuration>
+					</execution>
+
+					<execution>
+						<id>install-python-packages</id>
+						<phase>test</phase>
+						<goals>
+						<goal>exec</goal>
+						</goals>
+						<configuration>
+						<executable>bash</executable>
+						<workingDirectory>${project.basedir}/src/main/python</workingDirectory>
+						<arguments>
+							<argument>-c</argument>
+							<argument>source venv/bin/activate; pip install -r requirements.txt</argument>
+						</arguments>
+						</configuration>
+					</execution>
+
+					<execution>
+						<id>execute-python-scripts</id>
+						<phase>test</phase>
+						<goals>
+						<goal>exec</goal>
+						</goals>
+						<configuration>
+						<executable>bash</executable>
+						<workingDirectory>${project.basedir}/src/main/python</workingDirectory>
+						<arguments>
+							<argument>-c</argument>
+							<argument>source venv/bin/activate; 
+									python model2/generate_data2.py --startTime=${startTime} --endTime=${endTime}; 
+							</argument>
+						</arguments>
+						</configuration>
+					</execution>
+
+					<execution>
+						<id>test4</id>
+						<phase>test</phase>
+						<goals>
+							<goal>java</goal>
+						</goals>
+						<configuration>
+							<mainClass>com.rug.model2.Template2</mainClass>
+							<arguments>
+								<argument>${project.basedir}/helper_files/model2/templates/template2.provn</argument>
+								<argument>${project.basedir}/helper_files/model2/templates/template2.svg</argument>
+								<argument>${project.basedir}/helper_files/model2/templates/template2.png</argument>
+							</arguments>
+						</configuration>
+					</execution>
+
+					<execution>
+						<id>test5</id>
+						<phase>test</phase>
+						<goals>
+							<goal>java</goal>
+						</goals>
+						<configuration>
+							<mainClass>com.rug.model2.Binding2</mainClass>
+							<arguments>
+								<argument>${project.basedir}/helper_files/model2/bindings</argument>
+							</arguments>
+						</configuration>
+					</execution>
+
+					<execution>
+						<id>execute-command-model2-1</id>
+						<phase>test</phase>
+						<goals>
+							<goal>exec</goal>
+						</goals>
+						<configuration>
+							<executable>provconvert</executable>
+							<arguments>
+								<argument>-infile</argument>
+								<argument>${project.basedir}/helper_files/model2/templates/template2.provn</argument>
+								<argument>-bindings</argument>
+								<argument>${project.basedir}/helper_files/model2/bindings/binding2.json</argument>
+								<argument>-bindver</argument>
+								<argument>3</argument>
+								<argument>-outfile</argument>
+								<argument>${project.basedir}/provenance-graphs/model2/doc2.svg</argument>
+							</arguments>
+						</configuration>
+					</execution>
+
+					<execution>
+						<id>test6</id>
+						<phase>test</phase>
+						<goals>
+							<goal>java</goal>
+						</goals>
+						<configuration>
+							<mainClass>com.rug.AdjustSVGSize</mainClass>
+							<arguments>
+								<argument>${project.basedir}/provenance-graphs/model2</argument>
+							</arguments>
+						</configuration>
+					</execution>
+
+
+
+				</executions>
+
+			</plugin>
+
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.8.1</version>
+				<configuration>
+					<source>7</source>
+					<target>7</target>
+				</configuration>
+			</plugin>
+
+		</plugins>
+	</build>
+
+</project>

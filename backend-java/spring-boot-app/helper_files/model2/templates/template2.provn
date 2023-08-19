@@ -1,0 +1,22 @@
+document
+bundle vargen:bundle_id
+prefix vargen <http://openprovenance.org/vargen#>
+prefix tw <http://twitter.com/>
+prefix tmpl <http://openprovenance.org/tmpl#>
+prefix var <http://openprovenance.org/var#>
+
+entity(var:original_tweet_id,[prov:type = "ORIGINAL TWEET" %% xsd:string, prov:value = 'var:original_text', tw:created at = 'var:ORIGINAL_created_at', tw:location = 'var:ORIGINAL_location'])
+activity(var:post_id,-,-,[prov:type = "publish" %% xsd:string])
+agent(var:original_author_id,[prov:type = 'prov:Person', tw:name = 'var:ag_o_name'])
+wasGeneratedBy(var:original_tweet_id,var:post_id,-)
+wasAssociatedWith(var:post_id,var:original_author_id,-,[prov:role = "author" %% xsd:string])
+entity(var:original_author_props_id,[prov:type = "ORIGINAL USER PROPERTIES" %% xsd:string, tw:credible = 'var:ORIGINAL_credible', tw:username = 'var:ORIGINAL_username', tw:verified = 'var:ORIGINAL_verified', tw:followers_count = 'var:ORIGINAL_followers_count', tw:following_count = 'var:ORIGINAL_following_count'])
+wasAttributedTo(var:original_author_props_id, var:original_author_id)
+activity(var:react_id,-,-,[prov:type = "publish" %% xsd:string, tmpl:linked = 'var:reaction_group_of_tweets_id'])
+wasInformedBy(var:react_id,var:post_id)
+agent(var:reaction_group_of_authors_id,[prov:type = "GROUP OF USERS" %% xsd:string, tw:number_of_distinct_authors = 'var:nr_of_distinct_authors', tmpl:linked = 'var:react_id'])
+wasAssociatedWith(var:react_id,var:reaction_group_of_authors_id,-,[prov:role = "authors" %% xsd:string])
+entity(var:reaction_group_of_tweets_id,[prov:type = "GROUP OF REACTION TWEETS" %% xsd:string, tw:time_interval = 'var:time_interval', tw:number_of_reactions = 'var:nr_of_reactions', tw:percentage_out_of_total_reactions = 'var:percentage_out_of_total_reactions', tw:number_of_replies = 'var:nr_of_replies', tw:number_of_quotes = 'var:nr_of_quotes', tw:number_of_retweets = 'var:nr_of_retweets'])
+wasGeneratedBy(var:reaction_group_of_tweets_id,var:react_id,-)
+endBundle
+endDocument
