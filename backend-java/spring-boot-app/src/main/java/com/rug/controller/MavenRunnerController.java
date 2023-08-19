@@ -28,7 +28,7 @@ public class MavenRunnerController {
         this.mavenService = mavenService;
     }
 
-    @GetMapping("/model3/graph")
+    @GetMapping("/provenance/model2/graph")
     public ResponseEntity<Resource> runMavenAndReturnMessage(
         @RequestParam String startTime,
         @RequestParam String endTime
