@@ -24,13 +24,13 @@ const Navbar = () => {
       <ul className="navbar-nav">
         {/* Add other menu items here */}
         <li className="nav-item">
-            <Link to="/provenance/model2" className="nav-link">
-                Provenance - Model 2
+            <Link to="/reactions" className="nav-link">
+                Reactions
             </Link>
         </li>
         <li className="nav-item">
-            <Link to="/model3" className="nav-link">
-                Model 3
+            <Link to="/opinion-changes" className="nav-link">
+                Opinion Changes
             </Link>
         </li>
       </ul>

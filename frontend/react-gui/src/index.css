@@ -20,3 +20,13 @@ code {
   align-items: center; /* Center vertically */
   height: 50vh;
 }
+
+.button-container {
+  margin-left: 75px;
+  margin-top: 15px; /* Adjust the value as needed for your desired spacing */
+}
+
+.button-container Button {
+  margin-right: 50px; /* Adjust the value as needed for your desired spacing */
+}
+
