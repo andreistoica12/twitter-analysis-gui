@@ -7,3 +7,6 @@ backend-python/venv/
 frontend/react-gui/node_modules/
 frontend/react-gui/build/
 backend-java/spring-boot-app/src/main/python/input-data/
+backend-java/spring-boot-app/helper_files/model2/bindings/binding2.json
+backend-java/spring-boot-app/provenance-graphs/model2/doc2.svg
+backend-java/spring-boot-app/src/main/python/model2/data/data2.json
