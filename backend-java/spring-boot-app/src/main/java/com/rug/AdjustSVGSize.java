@@ -25,8 +25,8 @@ public class AdjustSVGSize {
         String fileName = path.getFileName().toString();
  
 
-        int height = (fileName.equals("doc1.svg")) ? 6000 : 1700;
-        int width = (fileName.equals("doc1.svg")) ? 3000 : 500;
+        int height = (fileName.equals("doc1.svg")) ? 6000 : 1800;
+        int width = (fileName.equals("doc1.svg")) ? 3000 : 600;
 
 
         try {

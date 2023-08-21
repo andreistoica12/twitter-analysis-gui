@@ -12,30 +12,31 @@ import org.springframework.core.io.Resource;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 
-import com.rug.service.MavenRunnerService;
+import com.rug.service.ProvenanceService;
 
 
 
 @RestController
 @CrossOrigin(origins = "http://localhost:3000")
 @RequestMapping("/api")
-public class MavenRunnerController {
+public class ProvenanceController {
 
-    private final MavenRunnerService mavenService;
+    private final ProvenanceService provenanceService;
 
     @Autowired
-    public MavenRunnerController(MavenRunnerService mavenService) {
-        this.mavenService = mavenService;
+    public ProvenanceController(ProvenanceService provenanceService) {
+        this.provenanceService = provenanceService;
     }
 
     @GetMapping("/provenance/model2/graph")
-    public ResponseEntity<Resource> runMavenAndReturnMessage(
+    public ResponseEntity<Resource> runMavenAndReturnFilePath(
         @RequestParam String startTime,
-        @RequestParam String endTime
+        @RequestParam String endTime,
+        @RequestParam String combination
     ) {
         try {
             // Call the service to run Maven and generate the SVG file path
-            String svgFilePath = mavenService.runMavenProjectAndGetSvgFiles(startTime, endTime);
+            String svgFilePath = provenanceService.runMavenProjectAndGetSvgFilePath(startTime, endTime, combination);
 
             // Load the generated SVG file as a Resource
             Resource resource = new FileSystemResource(svgFilePath);

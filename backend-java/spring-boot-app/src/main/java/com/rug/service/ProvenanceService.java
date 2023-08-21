@@ -9,9 +9,9 @@ import java.io.IOException;
 
 
 @Service
-public class MavenRunnerService {
+public class ProvenanceService {
 
-    public String runMavenProjectAndGetSvgFiles(String startTime, String endTime) throws IOException, InterruptedException {
+    public String runMavenProjectAndGetSvgFilePath(String startTime, String endTime, String combination) throws IOException, InterruptedException {
         String springBootAppDir = System.getProperty("user.dir");
 
         ProcessBuilder processBuilder = new ProcessBuilder(
@@ -19,7 +19,8 @@ public class MavenRunnerService {
             "clean",
             "install",
             "-DstartTime=" + startTime,
-            "-DendTime=" + endTime
+            "-DendTime=" + endTime,
+            "-Dcombination=" + combination
         );
         processBuilder.directory(new File(springBootAppDir)); // Set the working directory
         Process process = processBuilder.start();

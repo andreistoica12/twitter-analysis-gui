@@ -18,6 +18,7 @@
 		<spring-boot.version>2.5.15</spring-boot.version>
 		<startTime>15</startTime>
         <endTime>45</endTime>
+		<combination>1</combination>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -144,7 +145,7 @@
 						<arguments>
 							<argument>-c</argument>
 							<argument>source venv/bin/activate; 
-									python model2/generate_data2.py --startTime=${startTime} --endTime=${endTime}; 
+									python model2/generate_data2.py --startTime=${startTime} --endTime=${endTime} --combination=${combination}; 
 							</argument>
 						</arguments>
 						</configuration>
