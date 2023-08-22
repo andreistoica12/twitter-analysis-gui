@@ -9,6 +9,7 @@ import matplotlib
 # Set the Matplotlib backend to 'Agg' to avoid Qt platform plugin error
 # I don't need to interact with the graphs within WSL2, they should be saved to file.
 matplotlib.use('Agg')
+import matplotlib.patches as mpatches
 
 
 
@@ -181,6 +182,18 @@ def plot_network(reaction_interval, reaction_types, reactions_labels, central_no
                                 if is_author_with_multiple_reactions(node, df_authors_with_multiple_reactions) else 'black')
         # print('Added all colors.')
 
+
+        # Create legend patches for each category
+        legend_patches = [
+            mpatches.Patch(color='red', label='Original/Source Tweet'),
+            mpatches.Patch(color='black', label='Reactions whose authors posted a single reaction to the Source Tweet'),
+        ]
+
+        for count, color in color_dict.items():
+            legend_patches.append(mpatches.Patch(color=color, label=f'Reactions whose authors posted {count} reactions to the Source Tweet'))
+
+
+
         # Set the node size to 20
         node_size = 20
         # Set the edge color to grey and the opacity to 0.7
@@ -194,6 +207,18 @@ def plot_network(reaction_interval, reaction_types, reactions_labels, central_no
         # Draw the graph
         nx.draw(G, pos=pos, with_labels=False, node_size=node_size, node_color=node_colors, edge_color=edge_color, alpha=edge_alpha)
 
+
+        # Create the legend
+        legend = plt.legend(handles=legend_patches, title='Node Categories', fontsize='small')
+
+        # Get the current figure and axes
+        fig = plt.gcf()
+        ax = plt.gca()
+
+        # Add the legend to the right of the figure
+        fig.subplots_adjust(right=0.7)  # Adjust this value as needed
+        fig.legend(legend.get_patches(), [patch.get_label() for patch in legend.get_patches()], loc='center left', bbox_to_anchor=(1, 0.5))
+        
         # print('Finished drawing. Now saving to file...')
         path = os.path.join(folder_path, f'network_graph.png')
         plt.savefig(path)
