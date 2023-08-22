@@ -229,7 +229,7 @@ def main():
     # 2. Add argument for: date
     parser.add_argument('--startTime', type=str, default='15', help='Start time')
     parser.add_argument('--endTime', type=str, default='45', help='End time')
-    parser.add_argument('--combination', type=int, default=1, help='Combination of reactions')
+    parser.add_argument('--combination', type=str, default='1', help='Combination of reactions')
 
 
     # 3. Parse the command-line arguments
@@ -238,6 +238,7 @@ def main():
     startTime = args.startTime
     endTime = args.endTime
     combination = args.combination
+    combination = int(combination)
 
 
     print(f"Start time: {startTime}, End time: {endTime}, Combination: {combination}")
@@ -253,6 +254,7 @@ def main():
     reaction_types_full_list = [['replied_to'],
                                 ['quoted'], 
                                 ['replied_to', 'quoted'], 
+                                ['retweeted'],
                                 ['replied_to', 'retweeted'],
                                 ['quoted', 'retweeted'], 
                                 ['replied_to', 'quoted', 'retweeted']]

@@ -16,5 +16,5 @@ export const sliderSlice = createSlice({
   },
 });
 
-export const { setIntervalStart, setIntervalEnd } = sliderSlice.actions
+export const { setIntervalStart, setIntervalEnd, setCombination } = sliderSlice.actions
 export default sliderSlice.reducer

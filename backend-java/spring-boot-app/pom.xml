@@ -145,7 +145,7 @@
 						<arguments>
 							<argument>-c</argument>
 							<argument>source venv/bin/activate; 
-									python model2/generate_data2.py --startTime=${startTime} --endTime=${endTime} --combination=${combination}; 
+									python model2/generate_data2.py --startTime=${startTime} --endTime=${endTime} --combination=${combination};
 							</argument>
 						</arguments>
 						</configuration>
