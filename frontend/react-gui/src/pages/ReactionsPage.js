@@ -65,7 +65,7 @@ const ReactionsPage = () => {
             params: {
               startTime: intervalStart,
               endTime: intervalEnd,
-              combination: combination - 1 // Adjust value according to your requirement
+              combination: combination - 1
             },
             responseType: 'arraybuffer' // Use 'arraybuffer' to handle binary data
           }

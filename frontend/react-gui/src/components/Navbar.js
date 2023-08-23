@@ -22,7 +22,6 @@ const Navbar = () => {
     </button>
     <div className="collapse navbar-collapse" id="navbarNav">
       <ul className="navbar-nav">
-        {/* Add other menu items here */}
         <li className="nav-item">
             <Link to="/reactions" className="nav-link">
                 Reactions

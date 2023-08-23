@@ -18,7 +18,7 @@ const Slider = () => {
     <div>
       <MultiRangeSlider
         min={0}
-        max={1000}
+        max={720}
         values={[intervalStart, intervalEnd]}
         onChange={({ min, max }) => {
           handleIntervalChange([min, max]);
