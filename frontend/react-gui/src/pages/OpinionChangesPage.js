@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { Helmet } from 'react-helmet';
 import { Container, Form } from 'react-bootstrap';
 
 const OpinionChangesPage = () => {
@@ -36,32 +37,37 @@ const OpinionChangesPage = () => {
   }, [combination]);
 
   return (
-    <div>
-      <h3>Select reaction type(s):</h3>
+    <>
+      <Helmet>
+        <title>SNA - Opinion Changes</title>
+      </Helmet>
+      <div>
+        <h3>Select reaction type(s):</h3>
 
-      <Container>
-        <Form>
-          <Form.Check
-            type="checkbox"
-            label="Replies"
-            value="replies"
-            checked={combination.includes('replies')}
-            onChange={() => handleOptionChange('replies')}
-          />
-          <Form.Check
-            type="checkbox"
-            label="Quotes"
-            value="quotes"
-            checked={combination.includes('quotes')}
-            onChange={() => handleOptionChange('quotes')}
-          />
-        </Form>
-      </Container>
+        <Container>
+          <Form>
+            <Form.Check
+              type="checkbox"
+              label="Replies"
+              value="replies"
+              checked={combination.includes('replies')}
+              onChange={() => handleOptionChange('replies')}
+            />
+            <Form.Check
+              type="checkbox"
+              label="Quotes"
+              value="quotes"
+              checked={combination.includes('quotes')}
+              onChange={() => handleOptionChange('quotes')}
+            />
+          </Form>
+        </Container>
 
 
-      <h3>Intensities of opinion changes - distribution:</h3>
-      {displayedImage && <img src={process.env.PUBLIC_URL + '/OC-graphs/' + displayedImage} alt="Selected Image" />}
-    </div>
+        <h3>Intensities of opinion changes - distribution:</h3>
+        {displayedImage && <img src={process.env.PUBLIC_URL + '/OC-graphs/' + displayedImage} alt="Selected Image" />}
+      </div>
+    </>
   );
 }
 

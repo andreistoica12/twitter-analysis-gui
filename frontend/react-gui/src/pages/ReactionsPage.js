@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React, { useState } from 'react';
+import { Helmet } from 'react-helmet';
 import { useSelector } from 'react-redux';
 
 import { Alert, Button, Container, Form } from 'react-bootstrap';
@@ -107,72 +108,77 @@ const ReactionsPage = () => {
 
 
   return (
-    <div className='model2-container'>
-      <div className='content-container'>
+    <>
+      <Helmet>
+        <title>SNA - Reactions</title>
+      </Helmet>
+      <div className='model2-container'>
+        <div className='content-container'>
 
-        <Alert variant="info">
-          Select Two Intervals: Drag the thumbs to choose two intervals on the slider.
-        </Alert>
-
-
-        <Slider />
-
-
-        <Container>
-          <Form>
-            <Form.Check
-              type="checkbox"
-              label="Replies"
-              value={1}
-              checked={(combination & 1) === 1}
-              onChange={handleCheckboxChange}
-            />
-            <Form.Check
-              type="checkbox"
-              label="Quotes"
-              value={2}
-              checked={(combination & 2) === 2}
-              onChange={handleCheckboxChange}
-            />
-            <Form.Check
-              type="checkbox"
-              label="Retweets"
-              value={4}
-              checked={(combination & 4) === 4}
-              onChange={handleCheckboxChange}
-            />
-          </Form>
-        </Container>
+          <Alert variant="info">
+            Select Two Intervals: Drag the thumbs to choose two intervals on the slider.
+          </Alert>
 
 
-        <div className="button-container">
-          <Button variant="primary" onClick={handleGenerateProvenanceGraph}>
-            Show Provenance Graph
-          </Button>
-          <Button variant="primary" onClick={handleGenerateNetworkXGraph}>
-            Show NetworkX Graph
-          </Button>
+          <Slider />
+
+
+          <Container>
+            <Form>
+              <Form.Check
+                type="checkbox"
+                label="Replies"
+                value={1}
+                checked={(combination & 1) === 1}
+                onChange={handleCheckboxChange}
+              />
+              <Form.Check
+                type="checkbox"
+                label="Quotes"
+                value={2}
+                checked={(combination & 2) === 2}
+                onChange={handleCheckboxChange}
+              />
+              <Form.Check
+                type="checkbox"
+                label="Retweets"
+                value={4}
+                checked={(combination & 4) === 4}
+                onChange={handleCheckboxChange}
+              />
+            </Form>
+          </Container>
+
+
+          <div className="button-container">
+            <Button variant="primary" onClick={handleGenerateProvenanceGraph}>
+              Show Provenance Graph
+            </Button>
+            <Button variant="primary" onClick={handleGenerateNetworkXGraph}>
+              Show NetworkX Graph
+            </Button>
+          </div>
+
+
+          <div className="graph-container">
+            {isLoading ? (
+              <LoadingIndicator />
+            ) : backendError ? (
+              <Alert variant="danger">
+                <strong>Error:</strong> Failed to fetch graph from the backend.
+              </Alert>
+            ) : (
+              <>
+                {/* Conditionally render the SVG or PNG content based on selected graph */}
+                {isProvenanceGraph && <div dangerouslySetInnerHTML={{ __html: svgContent }} />}
+                {isNetworkXGraph && <img src={pngContent} alt="PNG Image" />}
+              </>
+            )}
+          </div>
+
         </div>
-
-
-        <div className="graph-container">
-          {isLoading ? (
-            <LoadingIndicator />
-          ) : backendError ? (
-            <Alert variant="danger">
-              <strong>Error:</strong> Failed to fetch graph from the backend.
-            </Alert>
-          ) : (
-            <>
-              {/* Conditionally render the SVG or PNG content based on selected graph */}
-              {isProvenanceGraph && <div dangerouslySetInnerHTML={{ __html: svgContent }} />}
-              {isNetworkXGraph && <img src={pngContent} alt="PNG Image" />}
-            </>
-          )}
-        </div>
-
       </div>
-    </div>
+    </>
   );
 };
 
