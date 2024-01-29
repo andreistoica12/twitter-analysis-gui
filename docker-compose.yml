@@ -2,15 +2,18 @@ version: '3'
 
 services:
   spring-boot-backend:
-    build: ./backend-java/spring-boot-app/
+    # build: ./backend-java/spring-boot-app/
+    image: andreistoica12/twitter-analysis-gui:spring-boot-backend
     ports:
       - "8080:8080"
   flask-backend:
-    build: ./backend-python/flask-app/
+    # build: ./backend-python/flask-app/
+    image: andreistoica12/twitter-analysis-gui:flask-backend
     ports:
       - "5000:5000"
   react-frontend:
-    build: ./frontend/react-gui/
+    # build: ./frontend/react-gui/
+    image: andreistoica12/twitter-analysis-gui:react-frontend
     ports:
       - "3000:3000"
     depends_on:
