@@ -12,9 +12,14 @@ def generate_graph():
     end_time = request.args.get('endTime')
     combination = request.args.get('combination')
 
-    # Construct the command to activate the virtual environment and run the script
-    script_folder = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'flask-app', 'python', 'networkx'))
+    # # Construct the command to activate the virtual environment and run the script
+    # script_folder = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'flask-app', 'python', 'networkx'))
+
+    # Construct the path to the script folder (relative to the Dockerfile)
+    script_folder = os.path.abspath(os.path.join(os.path.dirname(__file__), 'python', 'networkx'))
+
     script_path = os.path.join(script_folder, 'longitudinal_subnetworks.py')
+    
     command = f'python {script_path} --startTime={start_time} --endTime={end_time} --combination={combination}'
 
     print(command)
@@ -28,4 +33,4 @@ def generate_graph():
     return send_file(generated_png_path, mimetype='image/png')
 
 if __name__ == '__main__':
-    app.run()
+    app.run(host='0.0.0.0', port=5000, debug=True)
