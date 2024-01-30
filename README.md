@@ -9,8 +9,6 @@ Proof-of-concept graphical user interface which integrates multiple social netwo
 - [Installation](#installation)
 - [Technology stack](#technology-stack)
 - [Usage](#usage)
-- [Folder Structure](#folder-structure)
-- [Contributing](#contributing)
 - [License](#license)
 
 ## Introduction
@@ -27,7 +25,7 @@ Lastly, on a different page within the graphical interface, users can depict dis
 
 The pipeline may be of use to both researchers who appreciate alternative views on data or practitioners who would like to develop machine-learning algorithms to, for instance, predict user behaviour within social media networks or classify tweets based on their documented lineage.
 
-This project is part of the author's Master's Thesis in Computing Science at the Unviversity of Groningen (link.......)
+This project is part of the author's Master's Thesis in Computing Science at the Unviversity of Groningen (**[MSc Thesis - Andrei Stoica](https://drive.google.com/file/d/1ccP7dii6qer1SMckYH1lcJBKOZKcyoOX/view?usp=sharing)**).
 
 ## Prerequisites
 
@@ -47,7 +45,6 @@ docker-compose up
 ```
 
 After pulling 3 images from Docker Hub, each associated with the main components of the application (the Spring Boot and Flask backend components and the React frontent), the application can be accessed at **[localhost:3000](http://localhost:3000/)**, where the React entry point runs.
-
 
 ## Technology stack
 
@@ -69,8 +66,11 @@ After pulling 3 images from Docker Hub, each associated with the main components
 - **Node.js:** JavaScript runtime for building server-side applications.
 - **npm (Node Package Manager):** Package manager for JavaScript and Node.js.
 
-
 ## Usage
 
-You can freely interact with the visual components of the graphical interface, creating a custom configuration as described in the **Introduction**. 
+You can freely interact with the visual components of the graphical interface, creating a custom configuration as described in the **Introduction**. After each configuration, a GET request to the corresponding backend server will be made and the resuling resource will be created and returned and displayed.
+
+## License
+
+This project is licensed under the [MIT License](LICENSE).
 
