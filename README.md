@@ -29,7 +29,7 @@ This project is part of the author's Master's Thesis in Computing Science at the
 
 ## Prerequisites
 
-In order to successfully run the project, you need to have the following installed on your local machine:
+The project relies on Docker containers for a seamless and portable deployment. In order to successfully run the project, you need to have the following installed on your local machine:
 
 - [Docker](https://docs.docker.com/get-docker/)
 - [Docker Compose](https://docs.docker.com/compose/install/)
@@ -38,7 +38,9 @@ Note: Docker Desktop includes Docker Compose, along with Docker Engine and Docke
 
 ## Installation
 
-Open the command line interface of your choice and navigate to the location of the `docker-compose.yml` file. If you choose to clone the repository, this location is the root of the project. Run the following command:
+If you wish to have access to the source code of the project on your local machine, you can clone the repository. Otherwise, downloading the `docker-comppose.yml` file in a directory of your choice will suffice.
+
+Ensure Docker Engine is running on your system. Open a command line interface and navigate to the location of the `docker-compose.yml` file. If you chose to clone the repository, this location is the root of the project. Run the following command:
 
 ```bash
 docker-compose up
@@ -50,7 +52,8 @@ After pulling 3 images from Docker Hub, each associated with the main components
 
 ### Spring Boot Backend
 
-- **Java:** Programming language for the backend.
+- **Java:**  Programming language used for creating the provenance models, binding classes and visualizations. (thorough explanations of the template and binding mechanism can be found in the full report of the thesis: **[MSc Thesis - Andrei Stoica](https://drive.google.com/file/d/1ccP7dii6qer1SMckYH1lcJBKOZKcyoOX/view?usp=sharing)**).
+- **Python:** Programming language used for gathering the necessary inforamtion from the dataset to be passes onto the template mechanism.
 - **Spring Boot:** Framework for building Java-based enterprise applications.
 
 ### Flask Backend
