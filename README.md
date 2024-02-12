@@ -25,7 +25,7 @@ Lastly, on a different page within the graphical interface, users can depict dis
 
 The pipeline may be of use to both researchers who appreciate alternative views on data or practitioners who would like to develop machine-learning algorithms to, for instance, predict user behaviour within social media networks or classify tweets based on their documented lineage.
 
-This project is part of the author's Master's Thesis in Computing Science at the Unviversity of Groningen (**[MSc Thesis - Andrei Stoica](https://drive.google.com/file/d/1ccP7dii6qer1SMckYH1lcJBKOZKcyoOX/view?usp=sharing)**).
+This project is part of the author's Master's Thesis in Computing Science at the Unviversity of Groningen (**[MSc Thesis - Andrei Stoica](https://drive.google.com/file/d/1ccP7dii6qer1SMckYH1lcJBKOZKcyoOX/view?usp=sharing)**). If you want to read the report, please send me an access request.
 
 ## Prerequisites
 
