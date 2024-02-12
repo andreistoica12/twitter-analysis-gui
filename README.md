@@ -13,9 +13,9 @@ Proof-of-concept graphical user interface which integrates multiple social netwo
 
 ## Introduction
 
-The project is intended to be used as a standalone interative pipeline for visualising social network data. It offers a variety of visualiation types, making use of custom-defined features.
+The project is intended to be used as a standalone interactive pipeline for visualising social network data. It offers a variety of visualization types, making use of custom-defined features.
 
-First, provenance can be explained as the documented history of the origin, movement and evolution of data, along with its associated entities. It captures the lineage of data, offering insights into the interactions with various agents and processes. Due to the rising concerns about data integrity in the current technological era, transparency and reproducibility, the role of provenance cannot be overstated. The author defined 3 provenance models specifically tilored to Twitter interactions, one of which is integrated in this release, in order to provide a different approach to analysing this fast-paced envionment. The model was picked to provide information about the subnetwork of reactions of a central node. It is essential to acknowledge that, due to the computationally expensive nature of processing large datasets, such as the one at our disposal, our design choice was to select the tweet with the biggest number of reactions from a pre-existing Twitter dataset, playing the role of the original tweet. Nonetheless, users are entitled to choose the time interval, after the moment the original tweet was released, when a set of reactions were posted. Another filter which allows flexibility is the choice of the reaction type(s) to be taken into
+First, provenance can be explained as the documented history of the origin, movement and evolution of data, along with its associated entities. It captures the lineage of data, offering insights into the interactions with various agents and processes. Due to the rising concerns about data integrity in the current technological era, transparency and reproducibility, the role of provenance cannot be overstated. The author defined 3 provenance models specifically tailored to Twitter interactions, one of which is integrated in this release, in order to provide a different approach to analysing this fast-paced environment. The model was picked to provide information about the subnetwork of reactions of a central node. It is essential to acknowledge that, due to the computationally expensive nature of processing large datasets, such as the one at our disposal, our design choice was to select the tweet with the biggest number of reactions from a pre-existing Twitter dataset, playing the role of the original tweet. Nonetheless, users are entitled to choose the time interval, after the moment the original tweet was released, when a set of reactions were posted. Another filter which allows flexibility is the choice of the reaction type(s) to be taken into
 account. Any combination of replies, quotes and retweets, respectively, can be selected, hence
 generating a subnetwork tailored to each user’s needs. Note that provenance information can also be represented in text (.provn file extension).
 
@@ -25,7 +25,7 @@ Lastly, on a different page within the graphical interface, users can depict dis
 
 The pipeline may be of use to both researchers who appreciate alternative views on data or practitioners who would like to develop machine-learning algorithms to, for instance, predict user behaviour within social media networks or classify tweets based on their documented lineage.
 
-This project is part of the author's Master's Thesis in Computing Science at the Unviversity of Groningen (**[MSc Thesis - Andrei Stoica](https://drive.google.com/file/d/1ccP7dii6qer1SMckYH1lcJBKOZKcyoOX/view?usp=sharing)**). If you want to read the report, please send me an access request.
+This project is part of the author's Master's Thesis in Computing Science at the University of Groningen (**[MSc Thesis - Andrei Stoica](https://drive.google.com/file/d/1ccP7dii6qer1SMckYH1lcJBKOZKcyoOX/view?usp=sharing)**). If you want to read the report, please send me an access request.
 
 ## Prerequisites
 
@@ -46,14 +46,14 @@ Ensure Docker Engine is running on your system. Open a command line interface an
 docker-compose up
 ```
 
-After pulling 3 images from Docker Hub, each associated with the main components of the application (the Spring Boot and Flask backend components and the React frontent), the application can be accessed at **[localhost:3000](http://localhost:3000/)**, where the React entry point runs.
+After pulling 3 images from Docker Hub, each associated with the main components of the application (the Spring Boot and Flask backend components and the React frontend), the application can be accessed at **[localhost:3000](http://localhost:3000/)**, where the React entry point runs.
 
 ## Technology stack
 
 ### Spring Boot Backend
 
 - **Java:**  Programming language used for creating the provenance models, binding classes and visualizations. (thorough explanations of the template and binding mechanism can be found in the full report of the thesis: **[MSc Thesis - Andrei Stoica](https://drive.google.com/file/d/1ccP7dii6qer1SMckYH1lcJBKOZKcyoOX/view?usp=sharing)**).
-- **Python:** Programming language used for gathering the necessary inforamtion from the dataset to be passes onto the template mechanism.
+- **Python:** Programming language used for gathering the necessary information from the dataset to be passes onto the template mechanism.
 - **Spring Boot:** Framework for building Java-based enterprise applications.
 
 ### Flask Backend
@@ -71,9 +71,10 @@ After pulling 3 images from Docker Hub, each associated with the main components
 
 ## Usage
 
-You can freely interact with the visual components of the graphical interface, creating a custom configuration as described in the **Introduction**. After each configuration, a GET request to the corresponding backend server will be made and the resuling resource will be created and returned and displayed.
+You can freely interact with the visual components of the graphical interface, creating a custom configuration as described in the **Introduction**. After each configuration, a GET request to the corresponding backend server will be made and the resulting resource will be created and returned and displayed.
 
 ## License
 
 This project is licensed under the [MIT License](LICENSE).
+
 
